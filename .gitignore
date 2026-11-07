@@ -1,0 +1,34 @@
+# Dependencias (se reinstalan con `npm install`)
+node_modules/
+
+# Build de producción
+dist/
+dist-ssr/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / sistema
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Entorno
+.env
+.env.local
+.env.*.local
+
+# Caché
+.eslintcache
+.cache/
+temp/

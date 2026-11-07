@@ -1,0 +1,29 @@
+# Configuración de Netlify — deploy automático desde el repositorio.
+# Con este archivo no hace falta configurar nada en el panel de Netlify.
+
+[build]
+  # Comando que genera dist/ (un único index.html autocontenido)
+  command = "npm run build"
+  # Carpeta que se publica
+  publish = "dist"
+
+[build.environment]
+  # Versión de Node usada en el build (la app requiere Node 20+)
+  NODE_VERSION = "20"
+
+# Redirección SPA: cualquier ruta sirve index.html.
+# La app usa anclas (#simulador, #laboratorio, …), así que no es estrictamente
+# necesario, pero evita errores 404 si alguien comparte una URL con ruta.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache largo para el único asset (el nombre no cambia entre builds,
+# pero Netlify igual lo cachea por ETag).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
